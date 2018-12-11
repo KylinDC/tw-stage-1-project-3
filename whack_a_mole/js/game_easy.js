@@ -54,6 +54,8 @@ window.onload = function() {
     // TODO: 写游戏的初始化设置
     score = 0;
     timeUp = false;
+    titleH1.innerHTML = 'WHACK-A-MOLE!';
+    scoreBoard.innerHTML = score;
   }
 
   /**
