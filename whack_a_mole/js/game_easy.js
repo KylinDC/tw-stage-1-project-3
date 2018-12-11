@@ -43,6 +43,8 @@ window.onload = function() {
    */
   function resetScoreAndTime() {
     // TODO: 写游戏的初始化设置
+    score = 0;
+    timeUp = false;
   }
 
   /**
