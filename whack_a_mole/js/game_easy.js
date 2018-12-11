@@ -36,7 +36,7 @@ window.onload = function() {
   }
 
   function gameOver() {
-    hiddenMole(moles[holeNumber]);
+    downHole(lastHole);
     clearTimeout(moleTimeoutID);
     startBtn.innerHTML = 'Replay!';
     startBtn.style.display = 'inline-block';
@@ -63,9 +63,8 @@ window.onload = function() {
     return Math.round(Math.random() * (max - min)) + min;
   }
 
-  let holeNumber = 0;
   function randomHole(holes) {
-    holeNumber = randomTime(0, holes.length - 1);
+    let holeNumber = randomTime(0, holes.length - 1);
     let hole = holes[holeNumber];
     while (hole === lastHole) {
       hole = randomHole(holes);
@@ -75,27 +74,26 @@ window.onload = function() {
 
   let moleTimeoutID;
   function comeOutAndStop(hole, time) {
-    mole = moles[holeNumber];
-    showMole(mole);
+    upHole(hole);
     moleTimeoutID = setTimeout(() => {
-      hiddenMole(mole);
+      downHole(hole);
       peep();
     }, time);
   }
 
-  function showMole(mole) {
-    mole.style.top = '0';
+  function upHole(hole) {
+    hole.classList.add('up');
   }
 
-  function hiddenMole(hole) {
-    hole.style.top = '100%';
+  function downHole(hole) {
+    hole.classList.remove('up');
   }
 
   moles.forEach(mole => mole.addEventListener('click', function(e) {
     clearTimeout(moleTimeoutID);
     score += 1;
     scoreBoard.innerHTML = score;
-    hiddenMole(this);
+    downHole(lastHole);
     peep();
   }));
 
