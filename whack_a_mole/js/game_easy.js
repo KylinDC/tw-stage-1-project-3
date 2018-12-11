@@ -35,7 +35,16 @@ window.onload = function() {
 
     setTimeout(() => {
       // TODO: 写当游戏时间结束后要发生的事
+      timeUp = true;
+      gameOver();
     }, gameTime)
+  }
+
+  function gameOver() {
+    hiddenMole(moles[holeNumber]);
+    startBtn.innerHTML = 'Replay!';
+    startBtn.style.display = 'inline-block';
+    titleH1.innerHTML = 'TIME UP!';
   }
 
   /**
