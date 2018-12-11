@@ -19,22 +19,17 @@ window.onload = function() {
 
   function showBtnAnimation() {
     event.preventDefault();
-
     startBtn.classList.add('animate');
-    // 按钮动画延时，按钮动画结束后发生的事：换为正常状态（class中的animate去掉），开始按钮消失
     setTimeout(() => {
       startBtn.classList.remove('animate');
       startBtn.style.display = 'none';
     }, 700);
   }
 
-
   function startGame() {
     resetScoreAndTime();
     peep();
-
     setTimeout(() => {
-      // TODO: 写当游戏时间结束后要发生的事
       timeUp = true;
       gameOver();
     }, gameTime)
@@ -48,20 +43,13 @@ window.onload = function() {
     titleH1.innerHTML = 'TIME UP!';
   }
 
-  /**
-   * 初始化设置.
-   */
   function resetScoreAndTime() {
-    // TODO: 写游戏的初始化设置
     score = 0;
     timeUp = false;
     titleH1.innerHTML = 'WHACK-A-MOLE!';
     scoreBoard.innerHTML = score;
   }
 
-  /**
-   * 出洞.
-   */
   function peep() {
     if (!timeUp) {
       let time = randomTime(200, 1000);
@@ -71,27 +59,12 @@ window.onload = function() {
     }
   }
 
-  /**
-   * 随机生成地鼠出洞的停留时间. 该时间其实是[min, max]间的随机数.
-   *
-   * @param min 随机数的下界.
-   * @param max 随机数的上界.
-   * @returns {number}
-   */
   function randomTime(min, max) {
-    // TODO: 写生成随机数的逻辑，
     return Math.round(Math.random() * (max - min)) + min;
   }
 
-  /**
-   * 随机选择地鼠钻出的地洞，如果与上一个是相同地洞，则重新选择一个地洞.
-   *
-   * @param holes
-   * @returns {*}
-   */
   let holeNumber = 0;
   function randomHole(holes) {
-    // TODO: 写地鼠随机选择钻出地洞的逻辑，如果与上一个是相同地洞，则重新选择一个地洞.
     holeNumber = randomTime(0, holes.length - 1);
     let hole = holes[holeNumber];
     while (hole === lastHole) {
@@ -100,15 +73,8 @@ window.onload = function() {
     return hole;
   }
 
-  /**
-   * 地鼠出洞并停留相应时间，如果游戏时间未结束(timeUp)，继续出洞(peep).
-   *
-   * @param hole 地鼠所出地洞.
-   * @param time 地鼠停留时间.
-   */
   let moleTimeoutID;
   function comeOutAndStop(hole, time) {
-    // TODO: 写地鼠出洞并停留相应时间，如果游戏时间未结束(timeUp)，继续出洞(peep).
     mole = moles[holeNumber];
     showMole(mole);
     moleTimeoutID = setTimeout(() => {
@@ -125,11 +91,7 @@ window.onload = function() {
     hole.style.top = '100%';
   }
 
-  /**
-   * 打地鼠。为每个moles添加点击事件，点击后分数显示+1，地鼠入洞。
-   */
   moles.forEach(mole => mole.addEventListener('click', function(e) {
-    // TODO: 在这里写用户点击地鼠发生的事.
     clearTimeout(moleTimeoutID);
     score += 1;
     scoreBoard.innerHTML = score;
