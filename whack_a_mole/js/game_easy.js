@@ -42,6 +42,7 @@ window.onload = function() {
 
   function gameOver() {
     hiddenMole(moles[holeNumber]);
+    clearTimeout(moleTimeoutID);
     startBtn.innerHTML = 'Replay!';
     startBtn.style.display = 'inline-block';
     titleH1.innerHTML = 'TIME UP!';
