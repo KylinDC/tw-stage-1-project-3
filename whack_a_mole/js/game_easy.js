@@ -51,9 +51,11 @@ window.onload = function() {
    * 出洞.
    */
   function peep() {
-    const time = randomTime(200, 1000);
-    const hole = randomHole(holes);
-    comeOutAndStop(hole, time);
+    if (!timeUp) {
+      const time = randomTime(200, 1000);
+      const hole = randomHole(holes);
+      comeOutAndStop(hole, time);
+    }
   }
 
   /**
@@ -91,8 +93,15 @@ window.onload = function() {
    * @param hole 地鼠所出地洞.
    * @param time 地鼠停留时间.
    */
+  let moleTimeoutID;
   function comeOutAndStop(hole, time) {
     // TODO: 写地鼠出洞并停留相应时间，如果游戏时间未结束(timeUp)，继续出洞(peep).
+    mole = hole.querySelector('.mole');
+    showMole(mole);
+    moleTimeoutID = setTimeout(() => {
+      hiddenMole(mole);
+      peep();
+    }, time);
   }
 
   function showMole(mole) {
