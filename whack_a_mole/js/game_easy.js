@@ -64,8 +64,9 @@ window.onload = function() {
    */
   function peep() {
     if (!timeUp) {
-      const time = randomTime(200, 1000);
-      const hole = randomHole(holes);
+      let time = randomTime(200, 1000);
+      let hole = randomHole(holes);
+      lastHole = hole;
       comeOutAndStop(hole, time);
     }
   }
@@ -93,10 +94,9 @@ window.onload = function() {
     // TODO: 写地鼠随机选择钻出地洞的逻辑，如果与上一个是相同地洞，则重新选择一个地洞.
     holeNumber = randomTime(0, holes.length - 1);
     let hole = holes[holeNumber];
-    if (hole === lastHole) {
+    while (hole === lastHole) {
       hole = randomHole(holes);
     }
-    lastHole = hole;
     return hole;
   }
 
