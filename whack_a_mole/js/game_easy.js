@@ -76,9 +76,10 @@ window.onload = function() {
    * @param holes
    * @returns {*}
    */
+  let holeNumber = 0;
   function randomHole(holes) {
     // TODO: 写地鼠随机选择钻出地洞的逻辑，如果与上一个是相同地洞，则重新选择一个地洞.
-    let holeNumber = randomTime(0, holes.length - 1);
+    holeNumber = randomTime(0, holes.length - 1);
     let hole = holes[holeNumber];
     if (hole === lastHole) {
       hole = randomHole(holes);
@@ -96,7 +97,7 @@ window.onload = function() {
   let moleTimeoutID;
   function comeOutAndStop(hole, time) {
     // TODO: 写地鼠出洞并停留相应时间，如果游戏时间未结束(timeUp)，继续出洞(peep).
-    mole = hole.querySelector('.mole');
+    mole = moles[holeNumber];
     showMole(mole);
     moleTimeoutID = setTimeout(() => {
       hiddenMole(mole);
