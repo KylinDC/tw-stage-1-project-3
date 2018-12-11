@@ -99,6 +99,10 @@ window.onload = function() {
     mole.style.top = '0';
   }
 
+  function hiddenMole(hole) {
+    hole.style.top = '100%';
+  }
+
   /**
    * 打地鼠。为每个moles添加点击事件，点击后分数显示+1，地鼠入洞。
    */
