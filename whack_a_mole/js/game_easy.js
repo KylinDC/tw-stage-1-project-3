@@ -95,6 +95,10 @@ window.onload = function() {
     // TODO: 写地鼠出洞并停留相应时间，如果游戏时间未结束(timeUp)，继续出洞(peep).
   }
 
+  function showMole(mole) {
+    mole.style.top = '0';
+  }
+
   /**
    * 打地鼠。为每个moles添加点击事件，点击后分数显示+1，地鼠入洞。
    */
