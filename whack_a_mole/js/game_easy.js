@@ -117,6 +117,11 @@ window.onload = function() {
    */
   moles.forEach(mole => mole.addEventListener('click', function(e) {
     // TODO: 在这里写用户点击地鼠发生的事.
+    clearTimeout(moleTimeoutID);
+    score += 1;
+    scoreBoard.innerHTML = score;
+    hiddenMole(this);
+    peep();
   }));
 
 };
