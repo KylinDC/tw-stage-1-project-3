@@ -1,9 +1,9 @@
 window.onload = function () {
 
-  const holes = document.querySelectorAll('.hole');
-  const scoreBoard = document.querySelector('.score');
-  const moles = document.querySelectorAll('.mole');
-  const startBtn = document.getElementById('start_btn');
+  let holes = document.querySelectorAll('.hole');
+  let scoreBoard = document.querySelector('.score');
+  let moles = document.querySelectorAll('.mole');
+  let startBtn = document.getElementById('start_btn');
   let titleH1 = document.getElementById('title');
 
   let lastHole;
