@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
 
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
@@ -12,7 +12,7 @@ window.onload = function() {
   let gameTime = 10000;
 
 
-  startBtn.addEventListener('click', function() {
+  startBtn.addEventListener('click', function () {
     showBtnAnimation();
     startGame();
   }, false);
@@ -36,7 +36,7 @@ window.onload = function() {
   }
 
   function gameOver() {
-    downHole(lastHole);
+    hiddenMole(lastHole);
     clearTimeout(moleTimeoutID);
     startBtn.innerHTML = 'Replay!';
     startBtn.style.display = 'inline-block';
@@ -74,26 +74,26 @@ window.onload = function() {
 
   let moleTimeoutID;
   function comeOutAndStop(hole, time) {
-    upHole(hole);
+    showMole(hole);
     moleTimeoutID = setTimeout(() => {
-      downHole(hole);
+      hiddenMole(hole);
       peep();
     }, time);
   }
 
-  function upHole(hole) {
+  function showMole(hole) {
     hole.classList.add('up');
   }
 
-  function downHole(hole) {
+  function hiddenMole(hole) {
     hole.classList.remove('up');
   }
 
-  moles.forEach(mole => mole.addEventListener('click', function(e) {
+  moles.forEach(mole => mole.addEventListener('click', function (e) {
     clearTimeout(moleTimeoutID);
     score += 1;
     scoreBoard.innerHTML = score;
-    downHole(lastHole);
+    hiddenMole(lastHole);
     peep();
   }));
 
